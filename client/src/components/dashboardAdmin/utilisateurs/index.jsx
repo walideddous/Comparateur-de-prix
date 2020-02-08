@@ -38,7 +38,8 @@ const useStyles = makeStyles(theme => ({
   divDetails: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    padding: "20px"
   }
 }));
 

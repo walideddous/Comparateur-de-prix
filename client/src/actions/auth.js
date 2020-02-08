@@ -57,7 +57,9 @@ export const getAllUsers = () => async dispatch => {
 // Delete user Byid
 export const deleteUser = id => async dispatch => {
   if (id) {
-    var result = window.confirm("Want to delete?");
+    var result = window.confirm(
+      "Voulez vous vraiment éffacé cette utilisateur?"
+    );
     if (result) {
       try {
         await axios.delete(`/api/users/${id}`);
