@@ -10,6 +10,9 @@ const userSchema = new mongoose.Schema({
   agence: {
     type: Boolean
   },
+  isAdmin: {
+    type: Boolean
+  },
   nom: {
     type: String,
     required: true,
@@ -50,7 +53,9 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 13
   },
-  isAdmin: Boolean
+  status: {
+    type: String
+  }
 });
 
 userSchema.methods.generateAuthToken = function() {
@@ -65,8 +70,6 @@ const User = mongoose.model("User", userSchema);
 
 function validateRegisterUser(user) {
   const schema = {
-    client: Joi.boolean(),
-    agence: Joi.boolean(),
     nom: Joi.string()
       .min(5)
       .max(50)
@@ -93,6 +96,9 @@ function validateRegisterUser(user) {
     telephone: Joi.string()
       .min(5)
       .max(255),
+    status: Joi.string(),
+    client: Joi.boolean(),
+    agence: Joi.boolean(),
     isAdmin: Joi.boolean()
   };
   return Joi.validate(user, schema);

@@ -55,6 +55,7 @@ const RegisterProfessional = ({ setAlert, register, isAuthenticated }) => {
       .max(1024)
       .label("Comfirmer le mote de passe"),
     agence: Joi.boolean(),
+    status: Joi.string(),
     nomAgence: Joi.string()
       .required()
       .min(5)
@@ -83,7 +84,7 @@ const RegisterProfessional = ({ setAlert, register, isAuthenticated }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value, agence: true });
+    setFormData({ ...formData, [name]: value, agence: true, status: "Agence" });
   };
 
   const handleSubmit = async e => {

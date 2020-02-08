@@ -5,19 +5,36 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT,
+  GET_ALL_USERS,
+  DELETE_USER_BYID
 } from "../actions/types";
 
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: true,
-  user: null
+  user: null,
+  users: []
 };
 
 export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        users: [...payload]
+      };
+    case DELETE_USER_BYID:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        users: state.users.filter(user => user._id !== payload)
+      };
     case USER_LOADED:
       return {
         ...state,
