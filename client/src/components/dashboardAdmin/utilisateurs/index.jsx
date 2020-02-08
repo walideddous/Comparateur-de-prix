@@ -66,7 +66,7 @@ const tableIcons = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
 };
 
-const Utilisateurs = ({ getAllUsers, users, deleteUser }) => {
+const Utilisateurs = ({ getAllUsers, users, deleteUser, user }) => {
   const classes = useStyles();
   const state = {
     columns: [
@@ -80,6 +80,7 @@ const Utilisateurs = ({ getAllUsers, users, deleteUser }) => {
   const handlClick = e => {
     getAllUsers();
   };
+
   return (
     <Fragment>
       <div className={classes.toolbar} />
@@ -107,8 +108,10 @@ const Utilisateurs = ({ getAllUsers, users, deleteUser }) => {
             onRowDelete: oldData =>
               new Promise(resolve => {
                 setTimeout(() => {
+                  if (user._id !== oldData._id) {
+                    deleteUser(oldData._id);
+                  }
                   resolve();
-                  deleteUser(oldData._id);
                 }, 600);
               })
           }}
@@ -140,11 +143,13 @@ const Utilisateurs = ({ getAllUsers, users, deleteUser }) => {
 Utilisateurs.propTypes = {
   getAllUsers: PropTypes.func.isRequired,
   users: PropTypes.array.isRequired,
-  deleteUser: PropTypes.func.isRequired
+  deleteUser: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  users: state.auth.users
+  users: state.auth.users,
+  user: state.auth.user
 });
 
 export default connect(mapStateToProps, { getAllUsers, deleteUser })(
