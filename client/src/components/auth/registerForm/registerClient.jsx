@@ -45,7 +45,8 @@ const RegisterClient = ({ register, isAuthenticated, setAlert }) => {
       .max(255)
       .required()
       .label("Password2"),
-    client: Joi.boolean()
+    client: Joi.boolean(),
+    status: Joi.string()
   };
 
   const validate = () => {
@@ -61,7 +62,7 @@ const RegisterClient = ({ register, isAuthenticated, setAlert }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value, client: true });
+    setFormData({ ...formData, [name]: value, client: true, status: "Client" });
   };
 
   const handleSubmit = async e => {
