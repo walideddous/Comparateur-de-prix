@@ -54,11 +54,11 @@ export const getAllUsers = () => async dispatch => {
   }
 };
 
-// Delete user Byid
+// Delete user ById
 export const deleteUser = id => async dispatch => {
   if (id) {
     var result = window.confirm(
-      "Voulez vous vraiment éffacé cette utilisateur?"
+      "Voulez vous vraiment éffacé cette utilisateur ?"
     );
     if (result) {
       try {

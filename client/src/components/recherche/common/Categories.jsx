@@ -1,16 +1,18 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   contain: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "space-around",
+    flexWrap: "wrap",
+    padding: "20px"
   },
   buttonStyle: {
     height: "50px",
     width: "100px",
-    marginRight: "40px",
-    marginTop: "30px"
+    marginTop: "4px"
   }
 }));
 
@@ -20,7 +22,9 @@ export default function Categories(props) {
   return (
     <div className={classes.contain}>
       {props.categories.map(el => (
-        <button className={classes.buttonStyle}>{el.categorie}</button>
+        <Button className={classes.buttonStyle} variant='contained'>
+          {el.categorie}
+        </Button>
       ))}
     </div>
   );

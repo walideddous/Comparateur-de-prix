@@ -7,11 +7,10 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "75%",
-    margin: "5% 15%"
+    margin: "5%"
   },
   heading: {
-    fontSize: theme.typography.pxToRem(20),
+    fontSize: "17px",
     fontWeight: theme.typography.fontWeightRegular,
     textDecoration: "none"
   }

@@ -10,15 +10,15 @@ import Typography from "../common/Typography";
 const styles = theme => ({
   root: {
     display: "flex",
-    overflow: "hidden",
     backgroundColor: theme.palette.secondary.light,
-    height: 350,
     marginTop: theme.spacing(5)
   },
   container: {
     marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(30),
+    marginBottom: theme.spacing(3),
     display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
     position: "relative"
   },
   item: {
@@ -28,7 +28,7 @@ const styles = theme => ({
     padding: theme.spacing(0, 5)
   },
   image: {
-    height: 55
+    height: "3rem"
   },
   title: {
     marginTop: theme.spacing(5),

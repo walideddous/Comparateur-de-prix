@@ -14,8 +14,26 @@ const useStyles = makeStyles({
     minHeight: 300
   },
   carte: {
-    Width: 510,
-    height: 250
+    height: "80%"
+  },
+  titleStyle: {
+    margin: "10px",
+    fontSize: "20px"
+  },
+  lieuStyle: {
+    margin: "10px",
+    height: "50px",
+    width: "95%"
+  },
+  depStyle: {
+    margin: "10px",
+    height: "50px",
+    width: "42%"
+  },
+  arrStyle: {
+    margin: "10px",
+    height: "50px",
+    width: "45%"
   }
 });
 
@@ -26,24 +44,24 @@ export default function ImgMediaCard() {
     <Card className={classes.card}>
       <CardActionArea className={classes.carte}>
         <CardContent>
-          <Typography style={{ margin: 10, fontSize: 24 }}>
+          <Typography className={classes.titleStyle}>
             Recherchons ensemble le bon deal...
           </Typography>
           <input
-            style={{ margin: 10, height: 50, width: 420 }}
+            className={classes.lieuStyle}
             placeholder='Lieu de prise en charge '
-          ></input>{" "}
+          />
           <br />
           <input
-            style={{ margin: 10, height: 50, width: 200 }}
+            className={classes.depStyle}
             type='date'
             placeholder='date de prise en charge'
-          ></input>
+          />
           <input
-            style={{ margin: 10, height: 50, width: 200 }}
+            className={classes.arrStyle}
             type='date'
             placeholder='Date de restitution'
-          ></input>
+          />
         </CardContent>
       </CardActionArea>
       <CardActions>

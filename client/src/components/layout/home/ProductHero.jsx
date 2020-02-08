@@ -49,7 +49,7 @@ function ProductHero(props) {
         Location de voitures <br /> Recherchez, comparez et faites de vraies
         économies !
       </Typography>
-      <div className='rechcarousel' style={{ display: "flex" }}>
+      <div className='rechcarousel'>
         <Recherche />
       </div>
     </ProductHeroLayout>

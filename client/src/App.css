@@ -38,7 +38,6 @@ ul {
   overflow: hidden;
   padding: 0 2rem;
   margin-top: 6rem;
-  margin-bottom: 3rem;
 }
 
 /* Text Styles*/
@@ -281,7 +280,6 @@ button {
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   position: fixed;
   z-index: 2;
   width: 100%;

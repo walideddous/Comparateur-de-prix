@@ -104,15 +104,13 @@ const Utilisateurs = ({ getAllUsers, users, deleteUser, user }) => {
           icons={tableIcons}
           title='Utilisateurs'
           columns={state.columns}
-          data={users}
+          data={users.filter(use => use._id !== user._id)}
           editable={{
             onRowDelete: oldData =>
               new Promise(resolve => {
                 setTimeout(() => {
-                  if (user._id !== oldData._id) {
-                    deleteUser(oldData._id);
-                  }
                   resolve();
+                  deleteUser(oldData._id);
                 }, 600);
               })
           }}

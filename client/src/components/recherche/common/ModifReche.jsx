@@ -5,8 +5,7 @@ import RecherchePage2 from "./RecherchePage2";
 import ProductHeroLayout from "../../layout/home/ProductHeroLayout";
 
 const backgroundImage =
-  "https://images.unsplash.com/photo-1485463611174-f302f6a5c1c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60";
-
+  "https://www.mercedes-benz.fr/passengercars/mercedes-benz-cars/models/s-class/saloon-w222/explore/design-teaser/_jcr_content/par/teaserbox/teaserelement2/teaserelement/image.MQ6.6.20190725152929.jpeg";
 const styles = theme => ({
   background: {
     backgroundImage: `url(${backgroundImage})`,

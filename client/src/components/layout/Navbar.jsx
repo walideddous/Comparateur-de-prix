@@ -49,7 +49,7 @@ const Navbar = ({ user, isAuthenticated, logout }) => {
 
   return (
     <nav className='navbar bg-dark'>
-      <h4>
+      <h4 style={{ marginBottom: "0" }}>
         <Link to='/home'>
           <i className='fas fa-car'></i> Karen Wekri
         </Link>
