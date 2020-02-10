@@ -44,7 +44,9 @@ function DashboardNavbarGauche({ logout }) {
       <List>
         <ListItem
           button
-          selected={active.active1}
+          selected={
+            window.location.pathname === "/dashboard/profile" || active.active1
+          }
           onClick={() => {
             setActive({
               active1: true,
