@@ -10,6 +10,10 @@ import Input from "@material-ui/core/Input";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
+//Redux
+import { connect } from "react-redux";
+import { editerVoiture } from "../../../actions/car";
+
 const useStyles = makeStyles(theme => ({
   modal: {
     display: "flex",
@@ -43,9 +47,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ModalEditVoiture = props => {
+const ModalEditVoiture = ({ editerVoiture, id }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [data, setData] = React.useState({});
 
   const handleOpen = () => {
     setOpen(true);
@@ -55,12 +60,24 @@ const ModalEditVoiture = props => {
     setOpen(false);
   };
 
+  const handelchange = e => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
+
+  const handelEdit = id => {
+    editerVoiture({ id, ...data });
+    setOpen(false);
+  };
+
+  console.log(data, "edit");
+
   return (
-    <div className='buttonEdit'>
+    <div className="buttonEdit">
       <div onClick={handleOpen}>Editer</div>
       <Modal
-        aria-labelledby='transition-modal-title'
-        aria-describedby='transition-modal-description'
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
         onClose={handleClose}
@@ -72,17 +89,41 @@ const ModalEditVoiture = props => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h4 id='transition-modal-title'>Editer une voiture</h4>
-            <form className={classes.root} noValidate autoComplete='off'>
-              <TextField id='standard-basic' label='Image de la voiture' />
-              <TextField id='standard-basic' label='La marque de la voiture' />
-              <TextField id='standard-basic' label='Le model de la voiture' />
+            <h4 id="transition-modal-title">Editer une voiture</h4>
+            <form className={classes.root} noValidate autoComplete="off">
+              <TextField
+                id="standard-basic"
+                label="Image de la voiture"
+                name="image"
+                onChange={handelchange}
+              />
+              <TextField
+                id="standard-basic"
+                label="La marque de la voiture"
+                name="marque"
+                onChange={handelchange}
+              />
+              <TextField
+                id="standard-basic"
+                label="Le model de la voiture"
+                name="model"
+                onChange={handelchange}
+              />
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor='demo-dialog-native'>
+                <InputLabel htmlFor="demo-dialog-native">
                   Anne de mise en circulation
                 </InputLabel>
-                <Select native input={<Input id='demo-dialog-native' />}>
-                  <option value='' />
+                <Select
+                  native
+                  input={
+                    <Input
+                      id="demo-dialog-native"
+                      name="annee"
+                      onChange={handelchange}
+                    />
+                  }
+                >
+                  <option value="" />
                   <option>2000</option>
                   <option>2001</option>
                   <option>2002</option>
@@ -107,34 +148,61 @@ const ModalEditVoiture = props => {
                 </Select>
               </FormControl>
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor='demo-dialog-native'>Climatisé</InputLabel>
-                <Select native input={<Input id='demo-dialog-native' />}>
-                  <option value='' />
+                <InputLabel htmlFor="demo-dialog-native">Climatisé</InputLabel>
+                <Select
+                  native
+                  input={
+                    <Input
+                      id="demo-dialog-native"
+                      name="clim"
+                      onChange={handelchange}
+                    />
+                  }
+                >
+                  <option value="" />
                   <option>Oui</option>
                   <option>Non</option>
                 </Select>
               </FormControl>
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor='demo-dialog-native'>Boite</InputLabel>
-                <Select native input={<Input id='demo-dialog-native' />}>
-                  <option value='' />
+                <InputLabel htmlFor="demo-dialog-native">Boite</InputLabel>
+                <Select
+                  native
+                  input={
+                    <Input
+                      id="demo-dialog-native"
+                      name="boite"
+                      onChange={handelchange}
+                    />
+                  }
+                >
+                  <option value="" />
                   <option>Automatique</option>
                   <option>Manuelle</option>
                 </Select>
               </FormControl>
               <TextField
-                id='standard-basic'
-                label='Prix de location par jour (DT) '
-                type='number'
+                id="standard-basic"
+                label="Prix de location par jour (DT) "
+                type="number"
+                name="prix"
+                onChange={handelchange}
               />
               <TextField
-                id='standard-basic'
-                label='Voiture disponible non louer'
-                type='number'
+                id="standard-basic"
+                label="Voiture disponible non louer"
+                type="number"
+                name="dispo"
+                onChange={handelchange}
               />
             </form>
-            <button className='btn btn-primary btn-sm m-2'>Editer</button>
-            <button className='btn btn-danger btn-sm m-2' onClick={handleClose}>
+            <button
+              className="btn btn-primary btn-sm m-2"
+              onClick={() => handelEdit(id)}
+            >
+              Editer
+            </button>
+            <button className="btn btn-danger btn-sm m-2" onClick={handleClose}>
               Annuler
             </button>
           </div>
@@ -144,4 +212,4 @@ const ModalEditVoiture = props => {
   );
 };
 
-export default ModalEditVoiture;
+export default connect(null, { editerVoiture })(ModalEditVoiture);
