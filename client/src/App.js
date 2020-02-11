@@ -34,6 +34,7 @@ function App() {
   useEffect(() => {
     Store.dispatch(loadUser());
   }, []);
+
   return (
     <Provider store={Store}>
       <Router>

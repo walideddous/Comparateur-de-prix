@@ -48,7 +48,11 @@ function DashboardNavbarGauche({ logout }) {
       <List>
         <ListItem
           button
-          selected={active.active1}
+          selected={
+            window.location.pathname === "/dashboard/agence" || active.active1
+              ? true
+              : false
+          }
           onClick={() => {
             setActive({
               active1: true,
