@@ -308,3 +308,14 @@ button {
 .navbar .welcome span {
   margin-right: 0.6rem;
 }
+.modal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.paper{
+  background-Color: white;
+  border: 2px solid #000;
+  box-shadow: black;
+  padding: 2px 4px 3px
+}

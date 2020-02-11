@@ -9,3 +9,8 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const DELETE_USER_BYID = "DELETE_USER_BYID";
+
+//handleCar
+export const ADD_CAR = "ADD_CAR";
+export const DELETE_CAR = "DELETE_CAR";
+export const EDIT_CAR = "EDIT_CAR";
