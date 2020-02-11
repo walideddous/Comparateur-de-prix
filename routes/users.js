@@ -2,8 +2,6 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const _ = require("lodash");
 const { User, validateRegisterUser } = require("../models/user");
-const auth = require("../middleware/auth");
-const isadmin = require("../middleware/isadmin");
 
 const router = express.Router();
 
@@ -36,33 +34,6 @@ router.post("/", async (req, res) => {
       .send(_.pick(user, ["nom", "prenom", "email"]));
   } catch (ex) {
     console.error(ex.message);
-    res.status(500).send("Server error");
-  }
-});
-
-// @route Get api/users
-// @desc Get all the users
-// @ express Private
-router.get("/", auth, isadmin, async (req, res) => {
-  const users = await User.find().select("-password");
-
-  try {
-    res.json(users);
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).send("Server error");
-  }
-});
-
-// @route Delete api/users
-// @desc delete  byid
-// @ express Private
-router.delete("/:id", auth, isadmin, async (req, res) => {
-  const deleted = await User.findByIdAndDelete({ _id: req.params.id });
-  try {
-    res.json(deleted);
-  } catch (err) {
-    console.log(err.message);
     res.status(500).send("Server error");
   }
 });

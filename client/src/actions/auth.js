@@ -8,9 +8,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT,
-  GET_ALL_USERS,
-  DELETE_USER_BYID
+  LOGOUT
 } from "./types";
 
 //Register User
@@ -36,40 +34,6 @@ export const register = formData => async dispatch => {
       console.log(ex);
       dispatch(setAlert(ex.response.data));
       dispatch({ type: REGISTER_FAIL });
-    }
-  }
-};
-
-// Get all Users
-export const getAllUsers = () => async dispatch => {
-  try {
-    const res = await axios.get("/api/users");
-    const reponses = res.data;
-    dispatch({
-      type: GET_ALL_USERS,
-      payload: reponses
-    });
-  } catch (ex) {
-    dispatch(setAlert(ex.response.data));
-  }
-};
-
-// Delete user ById
-export const deleteUser = id => async dispatch => {
-  if (id) {
-    var result = window.confirm(
-      "Voulez vous vraiment éffacé cette utilisateur ?"
-    );
-    if (result) {
-      try {
-        await axios.delete(`/api/users/${id}`);
-        dispatch({
-          type: DELETE_USER_BYID,
-          payload: id
-        });
-      } catch (ex) {
-        dispatch(setAlert(ex.response.data));
-      }
     }
   }
 };

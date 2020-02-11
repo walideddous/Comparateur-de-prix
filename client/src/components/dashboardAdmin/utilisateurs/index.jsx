@@ -22,7 +22,7 @@ import ViewColumn from "@material-ui/icons/ViewColumn";
 import Button from "@material-ui/core/Button";
 //Redux
 import { connect } from "react-redux";
-import { getAllUsers, deleteUser } from "../../../actions/auth";
+import { getAllUsers, deleteUser } from "../../../actions/admin";
 
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
