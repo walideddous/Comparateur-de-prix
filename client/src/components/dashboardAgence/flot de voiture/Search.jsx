@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import ModalAjoutVoiture from "./ModalAjoutVoiture";
 import ModalFiltreVoiture from "./ModalFiltreVoiture";
-import AddCar from "./Ajouter"
 
 const Recherche = props => {
   const handleSubmit = e => {
@@ -26,7 +25,6 @@ const Recherche = props => {
           Recherche
         </button>
         <ModalAjoutVoiture />
-        {/* <AddCar /> */}
       </form>
     </Fragment>
   );

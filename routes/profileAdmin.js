@@ -1,6 +1,7 @@
 const express = require("express");
 const auth = require("../middleware/auth");
 const isadmin = require("../middleware/isadmin");
+const validateObjectId = require("../middleware/validateObjectId");
 const { User } = require("../models/user");
 
 const router = express.Router();
@@ -22,7 +23,7 @@ router.get("/", auth, isadmin, async (req, res) => {
 // @route Delete api/users
 // @desc delete  byid
 // @ express Private
-router.delete("/:id", auth, isadmin, async (req, res) => {
+router.delete("/:id", auth, isadmin, validateObjectId, async (req, res) => {
   const deleted = await User.findByIdAndDelete({ _id: req.params.id });
   try {
     res.json(deleted);

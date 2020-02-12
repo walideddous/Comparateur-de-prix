@@ -25,48 +25,47 @@ const VoitureCard = ({ voiture, suppVoiture }) => {
   const classes = useStyles();
 
   const handelSupp = () => {
-    suppVoiture(voiture.id);
+    suppVoiture(voiture._id);
   };
-
   return (
     <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="200"
+          component='img'
+          alt='Contemplative Reptile'
+          height='200'
           image={voiture.image}
-          title="Voiture"
+          title='Voiture'
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant='h5' component='h2'>
             Marque: {voiture.marque} <br />
             Model: {voiture.model}
           </Typography>
           <Fragment>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               Année : {voiture.annee}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               Climatisé: {voiture.clim}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               Boite: {voiture.boite}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               Prix/jour: {voiture.prix}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               Voiture disponible non louer: {voiture.dispo}
             </Typography>
           </Fragment>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          <ModalEditVoiture id={voiture.id} />
+        <Button size='small' color='primary'>
+          <ModalEditVoiture id={voiture._id} />
         </Button>
-        <Button size="small" color="primary" onClick={handelSupp}>
+        <Button size='small' color='primary' onClick={handelSupp}>
           Supprimer
         </Button>
       </CardActions>

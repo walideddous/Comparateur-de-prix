@@ -1,5 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+
+//Redux
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   contain: {
@@ -33,13 +37,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CardCar(props) {
+const CardCar = ({ isAuthenticated, carte }) => {
   const classes = useStyles();
   return (
     <React.Fragment>
       <div className='country'>
         <div className={classes.contain}>
-          {props.carte.map(el => (
+          {carte.map(el => (
             <div className={classes.column}>
               <img className={classes.logo} src={el.agence} alt='...' />
               <img className={classes.image} src={el.image} alt='...' />
@@ -53,7 +57,13 @@ export default function CardCar(props) {
                 <p>prix/jr:{el.prixjr}</p>
                 <p>Nbr de jours:3</p>
                 <p>prix Total:150dt</p>
-                <button className={classes.buttonStyle}>Reserver</button>
+                <button className={classes.buttonStyle}>
+                  {!isAuthenticated ? (
+                    <Link to='/login'>Reserver</Link>
+                  ) : (
+                    `Reserver`
+                  )}
+                </button>
               </div>
               <hr />
             </div>
@@ -62,4 +72,10 @@ export default function CardCar(props) {
       </div>
     </React.Fragment>
   );
-}
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps)(CardCar);

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import TextField from "@material-ui/core/TextField";
+
+//Redux
+import { connect } from "react-redux";
+import { getUser } from "./../../../actions/agence";
 
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
@@ -31,8 +35,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Compte = () => {
+const Compte = ({ getUser, profile }) => {
   const classes = useStyles();
+
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
 
   return (
     <div className={classes.mainStyle}>
@@ -139,4 +147,4 @@ const Compte = () => {
   );
 };
 
-export default Compte;
+export default connect(null, { getUser })(Compte);

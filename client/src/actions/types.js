@@ -9,8 +9,15 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const DELETE_USER_BYID = "DELETE_USER_BYID";
+export const GET_USER_BYID = "GET_USER_BYID";
+export const USER_ERROR = "USER_ERROR";
 
 //handleCar
+export const GET_CAR = "GET_CAR";
+export const GET_CAR_FAILED = "GET_CAR_FAILED";
 export const ADD_CAR = "ADD_CAR";
+export const ADD_CAR_FAILED = "ADD_CAR_FAILED";
 export const DELETE_CAR = "DELETE_CAR";
+export const DELETE_CAR_FAILED = "DELETE_CAR_FAILED";
 export const EDIT_CAR = "EDIT_CAR";
+export const EDIT_CAR_FAILED = "EDIT_CAR_FAILED";

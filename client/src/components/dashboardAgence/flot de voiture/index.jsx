@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 //Redux
 import { connect } from "react-redux";
+import { avoirVoiture } from "../../../actions/car";
 
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
@@ -15,23 +16,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const FlotVoiture = ({ voitures }) => {
+const FlotVoiture = ({ voitures, avoirVoiture }) => {
   const classes = useStyles();
-  const [cars, setcars] = React.useState([]);
 
   useEffect(() => {
-    setcars([...voitures]);
-  });
+    avoirVoiture();
+  }, [avoirVoiture]);
 
   return (
     <Fragment>
       <div className={classes.toolbar} />
-      <Recherche
-      // AddCar={handleAdd}
-      />
+      <Recherche />
       <Typography className={classes.typoStyle}>
-        {cars.map(car => (
-          <VoitureCard car={car} />
+        {voitures.map(voiture => (
+          <VoitureCard voiture={voiture} />
         ))}
       </Typography>
     </Fragment>
@@ -41,4 +39,4 @@ const mapStateToProps = state => ({
   voitures: state.car.voitures
 });
 
-export default connect(mapStateToProps)(FlotVoiture);
+export default connect(mapStateToProps, { avoirVoiture })(FlotVoiture);
