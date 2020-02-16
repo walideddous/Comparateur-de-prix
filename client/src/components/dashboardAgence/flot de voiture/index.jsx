@@ -3,6 +3,7 @@ import VoitureCard from "./VoitureCard";
 import Recherche from "./Search";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import jwt from "jsonwebtoken";
 
 //Redux
 import { connect } from "react-redux";
@@ -16,11 +17,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const FlotVoiture = ({ voitures, avoirVoiture }) => {
+const FlotVoiture = ({ voitures, avoirVoiture, token }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    avoirVoiture();
+    var decoded = jwt.decode(token);
+    avoirVoiture(decoded.id);
   }, [avoirVoiture]);
 
   return (
@@ -36,7 +38,8 @@ const FlotVoiture = ({ voitures, avoirVoiture }) => {
   );
 };
 const mapStateToProps = state => ({
-  voitures: state.car.voitures
+  voitures: state.car.voitures,
+  token: state.auth.token
 });
 
 export default connect(mapStateToProps, { avoirVoiture })(FlotVoiture);

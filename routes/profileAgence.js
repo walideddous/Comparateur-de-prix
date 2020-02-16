@@ -22,14 +22,18 @@ router.get("/me", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
 // @route Get /api/profile_agence
 // @desc get the currents cars
 // @ express Privat
-router.get("/", auth, async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
+  const id = req.params.id;
   try {
-    const agence = await Agence.find({});
-    if (!agence) return res.status(404).json({ msg: "User not found" });
-    res.json(agence);
+    if (id) {
+      const agence = await Agence.find({ user: id });
+      if (!agence) return res.status(404).json({ msg: "User not found" });
+      res.json(agence);
+    }
   } catch (ex) {
     res.status(500).send("Server Error");
   }

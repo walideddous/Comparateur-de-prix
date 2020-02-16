@@ -8,9 +8,10 @@ import {
 } from "./types";
 
 //avoir toute les voitures
-export const avoirVoiture = () => async dispatch => {
+export const avoirVoiture = id => async dispatch => {
   try {
-    const res = await axios.get("/api/profile_agence");
+    const res = await axios.get(`/api/profile_agence/${id}`);
+    //    const resultat = res.data.filter(el => el.user === idUser);
     dispatch({
       type: GET_CAR,
       payload: res.data
